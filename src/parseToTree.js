@@ -1,7 +1,7 @@
 const parseVerse = require('./parseVerse');
 const parseVerseMatter = require('./parseVerseMatter');
 const parseLineForNotes = require('./parseLineForNotes');
-const getId = require('getId');
+const getId = require('./getId');
 
 const TEXT = 'text';
 const NOTE = 'note';
