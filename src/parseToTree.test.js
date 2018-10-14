@@ -2,7 +2,7 @@ const test = require('tape');
 const mock = require('mock-require');
 
 const id = 'abc';
-mock('cuid', () => id);
+mock('getId', () => id);
 
 const parseToTree = require('./parseToTree');
 

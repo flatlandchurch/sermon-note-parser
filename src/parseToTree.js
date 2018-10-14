@@ -1,8 +1,7 @@
-const cuid = require('cuid');
-
 const parseVerse = require('./parseVerse');
 const parseVerseMatter = require('./parseVerseMatter');
 const parseLineForNotes = require('./parseLineForNotes');
+const getId = require('getId');
 
 const TEXT = 'text';
 const NOTE = 'note';
@@ -27,7 +26,6 @@ module.exports = (input) => {
           type: TEXT,
           text: line,
           lineBreakAfter: false,
-          id: cuid(),
         });
 
         lineNumber += 1;
@@ -44,7 +42,6 @@ module.exports = (input) => {
           text: verse.text,
           ref: Object.assign({}, verse.ref, baseVerseMatter),
           lineBreakAfter: idx === (verses.length - 1),
-          id: cuid(),
         })));
 
         lineNumber += 2;
@@ -54,7 +51,6 @@ module.exports = (input) => {
           type: TEXT,
           text: line,
           lineBreakAfter: true,
-          id: cuid(),
         });
 
         lineNumber += 1;
@@ -64,16 +60,19 @@ module.exports = (input) => {
 
     const textLine = parseLineForNotes(line);
     tree.push(...textLine.map((t, idx) => Object.assign({}, t, {
-      id: cuid(),
       lineBreakAfter: t.type !== NOTE ? idx === (textLine.length - 1) : t.lineBreakAfter,
     })));
 
     lineNumber += 1;
   }
 
-  if (tree[tree.length - 1].text) {
-    return tree;
+  const response = tree.map((node, idx) => Object.assign({}, node, {
+    id: getId(node, idx),
+  }));
+
+  if (response[response.length - 1].text) {
+    return response;
   }
 
-  return tree.slice(0, -1);
+  return response.slice(0, -1);
 };

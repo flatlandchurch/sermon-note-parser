@@ -11,11 +11,11 @@
     "tape": "^4.9.1"
   },
   "dependencies": {
-    "cuid": "^2.1.4",
+    "base-64": "^0.1.0",
     "lodash": "^4.17.11"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/flatlandchurch/sermon-note-parser.git"
+    "type": "git",
+    "url": "https://github.com/flatlandchurch/sermon-note-parser.git"
   }
 }
