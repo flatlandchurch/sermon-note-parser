@@ -66,13 +66,7 @@ module.exports = (input) => {
     lineNumber += 1;
   }
 
-  const response = tree.map((node, idx) => Object.assign({}, node, {
+  return tree.map((node, idx) => Object.assign({}, node, {
     id: getId(node, idx),
   }));
-
-  if (response[response.length - 1].text) {
-    return response;
-  }
-
-  return response.slice(0, -1);
 };
