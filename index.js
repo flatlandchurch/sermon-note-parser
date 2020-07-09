@@ -1,4 +1,4 @@
-module.exports = {
-  parse: require('./src/parseToTree'),
-  group: require('./src/groupTreeByLines'),
-};
+const group = require('./src/groupTreeByLines');
+const parse = require('./src/parseToTree');
+
+module.exports = (input) => group(parse(input));
