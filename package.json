@@ -13,7 +13,7 @@
   "dependencies": {
     "base-64": "^0.1.0",
     "lodash": "^4.17.11",
-    "markdown-it": "^8.4.2"
+    "markdown-it": "^12.3.2"
   },
   "repository": {
     "type": "git",
